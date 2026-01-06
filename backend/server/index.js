@@ -1,9 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
-import authRoutes from "./routes/auth.js";
-import { connectDB } from "./config/db.js";
+import authRoutes from "../routes/auth.js";
+import { connectDB } from "../config/db.js";
 import cors from 'cors'
-import base64Routes from './routes/base64.js'
+import base64Routes from '../routes/base64.js'
 
 dotenv.config();
 
@@ -11,7 +11,12 @@ const PORT = process.env.PORT || 5000;
 
 const app = express();
 
-app.use(cors());
+app.use(cors(
+    {origin : 'https://deploy-base64-encoder.vercel.app',
+    methods: ['GET', 'POST'],
+    credentials: true
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
