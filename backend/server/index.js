@@ -27,7 +27,7 @@ app.use('/api/base64', base64Routes);
 connectDB();
 
 app.get("/", (req, res) => {
-  res.send("API is running...");
+  res.send("API is running correctly...");
 });
 
 if (!process.env.VERCEL) {
