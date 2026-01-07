@@ -4,6 +4,7 @@ import authRoutes from "../routes/auth.js";
 import { connectDB } from "../config/db.js";
 import cors from 'cors'
 import base64Routes from '../routes/base64.js'
+import serverless from 'serverless-http'
 
 dotenv.config();
 
@@ -29,6 +30,10 @@ app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-app.listen(PORT, () => {
-  console.log(`Server started at port ${PORT}`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Server started at port ${PORT}`);
+  });
+}
+
+export default serverless(app);
