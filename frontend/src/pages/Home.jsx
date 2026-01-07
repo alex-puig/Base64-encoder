@@ -22,7 +22,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className='pt-24'>
+      <div className='pt-5'>
         {mode === 'encode' ? <Encode /> : <Decode />}
       </div>
     </div>

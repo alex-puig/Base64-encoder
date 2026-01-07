@@ -26,35 +26,64 @@ const Login = ({setUser}) => {
     }
   }
 
-  return (
-    <>
-    <div className='min-h-screen flex items-center justify-center'>
+return (
+  <>
+    <div className='min-h-screen flex items-center justify-center p-4'>
       <Aurora />
-      <div className='bg-white/25 rounded-lg shadow-lg w-full max-w-md border border-white/50'>
-        <h2 className="text-2xl font-bold mb-6 text-center text-white bg-white/25 p-5 shadow-lg">
+      <div className='bg-white/15 backdrop-blur-xl rounded-2xl shadow-2xl w-full max-w-md border border-white/40 shadow-white/20'>
+        <h2 className="text-3xl font-bold mb-10 text-center text-white bg-gradient-to-r from-white/15 to-white/5 p-6 shadow-inner tracking-widest">
           L O G I N
         </h2>
 
-        <form onSubmit={handleSubmit} className='p-5'>
-          <div>
-            <label className='text-white'>Username</label>
-            <input type='username' name="username" value={formData.username} onChange={handleChange} className='w-full p-3 border border-white/50 rounded-lg shadow-lg text-white'/>
+        <form onSubmit={handleSubmit} className='px-8 pb-8'>
+          <div className='mb-8'>
+            <label className='text-white font-medium block mb-3'>Username</label>
+            <div className='relative'>
+              <input
+                type='username'
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+                className='w-full p-3 bg-transparent border-0 border-b-2 border-white/40 text-white placeholder-white/40 focus:outline-none focus:border-b-2 focus:border-white focus:ring-0 transition-all duration-300'
+                placeholder="Enter username"
+              />
+              <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-white to-white/60 transition-all duration-300 group-focus-within:w-full"></div>
+            </div>
           </div>
-          <div>
-            <label className='text-white'>Password</label>
-            <input type="password" name='password' value={formData.password} onChange={handleChange} className='w-full p-3 border border-white/50 rounded-lg shadow-lg text-white'/>
+          <div className='mb-10'>
+            <label className='text-white font-medium block mb-3'>Password</label>
+            <div className='relative'>
+              <input
+                type="password"
+                name='password'
+                value={formData.password}
+                onChange={handleChange}
+                className='w-full p-3 bg-transparent border-0 border-b-2 border-white/40 text-white placeholder-white/40 focus:outline-none focus:border-b-2 focus:border-white focus:ring-0 transition-all duration-300'
+                placeholder="Enter password"
+              />
+              <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-white to-white/60 transition-all duration-300 group-focus-within:w-full"></div>
+            </div>
           </div>
-          {error && <p className="text-gray-200 mt-4 text-sm">{error}</p>}
-          <div className='flex justify-center m-5'>
-            <button type="submit" className='p-3 border border-white/50 bg-white/25 hover:bg-white/40 rounded-lg text-white w-50 shadow-lg transform transition duration-150 ease-out hover:scale-105 hover:shadow-2xl active:scale-100 cursor-pointer'>
-              Login
+
+          {error && (
+            <p className="text-red-100 mt-4 text-sm bg-red-500/20 backdrop-blur-sm p-3 rounded border border-red-400/30 mb-6">
+              {error}
+            </p>
+          )}
+
+          <div className='flex justify-center'>
+            <button
+              type="submit"
+              className='px-8 py-4 border border-white/40 bg-gradient-to-r from-white/15 to-white/5 backdrop-blur-md hover:from-white/20 hover:to-white/10 rounded-xl text-white font-medium shadow-lg transform transition-all duration-200 ease-out hover:scale-[1.02] hover:shadow-xl active:scale-100 cursor-pointer w-full max-w-xs'
+            >
+              Sign In
             </button>
           </div>
         </form>
       </div>
     </div>
-    </>
-  )
+  </>
+)
 }
 
 export default Login

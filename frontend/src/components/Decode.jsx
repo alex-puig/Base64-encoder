@@ -24,25 +24,47 @@ export const Decode = () => {
   }
 
 
-  return (
-      <>
-      <div className='min-h-screen flex items-center justify-center' >
-        <div className='bg-white/25 rounded-lg shadow-lg w-full max-w-3/4 h-full max-h-3/4 border border-white/50'>
-          <div>
-            <h1 className="text-2xl font-bold mb-6 text-center text-white bg-white/25 p-5 shadow-lg">Base64 Decode</h1>
+ return (
+  <>
+    <div className='min-h-screen flex items-center justify-center p-4'>
+      <div className='bg-white/15 backdrop-blur-xl rounded-2xl shadow-2xl w-full max-w-md border border-white/40 shadow-white/20'>
+        <div>
+          <h1 className="text-3xl font-bold mb-10 text-center text-white bg-gradient-to-r from-white/15 to-white/5 p-6 shadow-inner tracking-wide">
+            Base64 Decode
+          </h1>
+        </div>
+        <form className='px-8 pb-8' onSubmit={handleSubmit}>
+          <div className='mb-8'>
+            <textarea
+              type="text"
+              name='text'
+              value={inText.text}
+              onChange={handleChange}
+              className='w-full p-4 bg-white/10 backdrop-blur-md border border-white/40 rounded-xl shadow-inner text-white placeholder-white/60 focus:outline-none focus:border-white/60 focus:ring-2 focus:ring-white/30 transition-all duration-200 resize-none'
+              placeholder='Input your text'
+              rows={5}
+            />
           </div>
-          <form className='p-5' onSubmit={handleSubmit}>
-            <textarea type="text" name='text' value={inText.text} onChange={handleChange} className='w-full p-3 border border-white/50 rounded-lg shadow-lg text-white h-40' placeholder='Input your text'/>
-            <div className='flex justify-center m-5'>
-              <button className='p-3 border border-white/50 bg-white/25 hover:bg-white/40 rounded-lg text-white w-50 shadow-lg transform transition duration-150 ease-out hover:scale-105 hover:shadow-2xl active:scale-100 cursor-pointer'>Decode</button>
+
+          <div className='flex justify-center mb-8'>
+            <button
+              className='px-8 py-4 border border-white/40 bg-gradient-to-r from-white/15 to-white/5 backdrop-blur-md hover:from-white/20 hover:to-white/10 rounded-xl text-white font-medium shadow-lg transform transition-all duration-200 ease-out hover:scale-[1.02] hover:shadow-xl active:scale-100 cursor-pointer w-full max-w-xs'
+            >
+              Decode
+            </button>
+          </div>
+        </form>
+
+        <div className='px-8 pb-8'>
+          {outText && (
+            <div className='w-full p-4 bg-white/10 backdrop-blur-md border border-white/40 rounded-xl shadow-inner text-white min-h-[60px] whitespace-pre-wrap break-words'>
+              {outText}
             </div>
-          </form>
-          <div className='flex items-center justify-center'>
-            {outText && <p  className='w-full p-3 border border-white/50 rounded-lg shadow-lg text-white m-5'>{outText}</p>}
-          </div>
+          )}
         </div>
       </div>
-      </>
-  )
+    </div>
+  </>
+)
 }
 
